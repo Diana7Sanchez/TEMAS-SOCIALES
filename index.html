@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Trámites y Temas Sociales - SICT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sict: {
+                            pantone: '#611232',      
+                            guindaLight: '#9d2449',  
+                            dorado: '#a57f2c',       
+                            arena: '#DDC9A3',        
+                            verde: '#13322e',        
+                            grisFondo: '#F8FAFC' 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 8px -1px rgba(0, 0, 0, 0.03); }
+        .card-hover:hover { transform: translateY(-4px); }
+        /* Sombras dinámicas basadas en el color oficial de cada tarjeta */
+        .card-1:hover { box-shadow: 0 12px 24px -4px rgba(165, 127, 44, 0.15); border-color: #a57f2c; }
+        .card-2:hover { box-shadow: 0 12px 24px -4px rgba(157, 36, 73, 0.15); border-color: #9d2449; }
+        .card-3:hover { box-shadow: 0 12px 24px -4px rgba(19, 50, 46, 0.15); border-color: #13322e; }
+    </style>
+</head>
+<body class="bg-sict-grisFondo text-slate-800 font-sans antialiased">
+
+    <!-- ENCABEZADO INSTITUCIONAL -->
+    <header class="relative bg-gradient-to-r from-sict-pantone via-[#4A0A23] to-[#2D0514] text-white shadow-xl overflow-hidden select-none border-b-4 border-sict-arena">
+        <div class="absolute top-0 right-1/3 w-16 h-full bg-sict-arena/10 skew-x-12 transform pointer-events-none"></div>
+        <div class="container mx-auto max-w-7xl px-6 py-6 md:py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 relative z-10">
+            
+            <div class="space-y-1.5 border-l-4 border-sict-arena pl-4 md:pl-6">
+                <span class="text-[10px] font-black tracking-[0.25em] text-sict-arena uppercase block opacity-90">Gobierno de México</span>
+                <h1 class="text-base md:text-xl font-black uppercase tracking-wider leading-tight text-white drop-shadow-sm">
+                    Secretaría de Infraestructura, <br class="hidden md:inline">Comunicaciones y Transportes
+                </h1>
+                <h2 class="text-xs md:text-sm font-bold uppercase tracking-wide text-zinc-300">
+                    Subsecretaría de Comunicaciones y Transportes
+                </h2>
+            </div>
+
+        
+            <div class="flex items-center">
+                <div class="bg-black/30 backdrop-blur-md rounded-xl border border-white/10 px-5 py-3.5 shadow-inner flex flex-col justify-center min-w-[240px]">
+                    <div class="flex items-center gap-2 mb-1.5 border-b border-white/10 pb-1.5">
+                        <span class="w-2 h-2 rounded-full bg-sict-arena animate-pulse"></span>
+                        <span class="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">
+                            Autotransporte Federal
+                        </span>
+                    </div>
+                    <h3 class="text-sm md:text-base font-black uppercase text-sict-arena tracking-wide drop-shadow-md">
+                        Temas Sociales
+                    </h3>
+                    <p class="text-[9px] font-bold text-zinc-400 uppercase tracking-widest mt-0.5">
+                        Módulo Analítico
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-7xl p-4 md:p-6 space-y-6">
+
+        <!-- PANEL DE FILTRO Y CONTROL -->
+        <section class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-sict-pantone/5 p-2 rounded-lg border border-sict-pantone/10">
+                    <span class="text-xs font-bold text-sict-pantone uppercase tracking-wider">Periodo de Evaluación</span>
+                </div>
+                <select class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 text-xs font-bold text-slate-700 focus:outline-none">
+                    <option>Año en Curso (2026)</option>
+                </select>
+            </div>
+            <div class="w-full md:w-auto relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400 text-xs">🔍</span>
+                <input type="text" placeholder="Buscar entidad, unión o cámara..." class="w-full md:w-80 bg-slate-50 border border-slate-300 rounded-lg pl-8 pr-3 py-1.5 text-xs font-medium focus:outline-none">
+            </div>
+        </section>
+
+        <!-- SECCIÓN TARJETAS SUPERIORES -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- TARJETA 1: ESTADOS -->
+            <div onclick="mostrarDetalle('estados', 'ESTADOS (Métricas Individuales)')" class="bg-white rounded-2xl border-t-4 border-t-sict-dorado border-x-slate-200 border-b-slate-200 border custom-shadow card-hover card-1 cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                <div class="p-6 space-y-5">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest group-hover:text-sict-dorado transition-colors">1. ESTADOS</h3>
+                        <span class="bg-amber-50 text-sict-dorado text-[9px] font-black tracking-wider px-2 py-1 rounded-md border border-amber-100 uppercase">Territorial</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 shadow-inner">
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Total Trámites</p>
+                            <p class="text-2xl font-black text-slate-800 mt-1">14,250</p>
+                        </div>
+                        <div class="bg-sict-verde/5 p-3 rounded-xl border border-sict-verde/10 shadow-inner">
+                            <p class="text-[9px] text-sict-verde font-bold uppercase tracking-wider">Entregados</p>
+                            <p class="text-2xl font-black text-sict-verde mt-1">9,840</p>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN DE EFICIENCIA PROMEDIO -->
+                    <div class="space-y-2.5 pt-2 border-t border-slate-100/80">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-1">
+                            <span class="text-sm font-black text-slate-500 uppercase tracking-wide">Eficiencia Promedio</span>
+                            <div class="flex items-center gap-1 text-sict-verde font-black text-xl sm:text-2xl leading-none">
+                                <span>69.1%</span>
+                                <span class="text-base">▲</span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden shadow-inner border border-slate-200/50">
+                            <div class="bg-sict-verde h-full rounded-full transition-all duration-500" style="width: 69.1%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex justify-between items-center text-[11px] font-bold text-sict-dorado group-hover:bg-sict-dorado group-hover:text-white transition-all">
+                    <span>Desglosar Estados</span>
+                    <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: UNIONES Y ASOCIACIONES  -->
+            <div onclick="mostrarDetalle('uniones', 'UNIONES Y ASOCIACIONES (Métricas por Gremio)')" class="bg-white rounded-2xl border-t-4 border-t-sict-guindaLight border-x-slate-200 border-b-slate-200 border custom-shadow card-hover card-2 cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                <div class="p-6 space-y-5">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest group-hover:text-sict-guindaLight transition-colors">2. UNIONES / ASOC.</h3>
+                        <span class="bg-rose-50 text-sict-guindaLight text-[9px] font-black tracking-wider px-2 py-1 rounded-md border border-rose-100 uppercase">Gremios</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 shadow-inner">
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Total Trámites</p>
+                            <p class="text-2xl font-black text-slate-800 mt-1">28,900</p>
+                        </div>
+                        <div class="bg-sict-verde/5 p-3 rounded-xl border border-sict-verde/10 shadow-inner">
+                            <p class="text-[9px] text-sict-verde font-bold uppercase tracking-wider">Entregados</p>
+                            <p class="text-2xl font-black text-sict-verde mt-1">18,120</p>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN DE EFICIENCIA PROMEDIO -->
+                    <div class="space-y-2.5 pt-2 border-t border-slate-100/80">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-1">
+                            <span class="text-sm font-black text-slate-500 uppercase tracking-wide">Eficiencia Promedio</span>
+                            <div class="flex items-center gap-1 text-red-600 font-black text-xl sm:text-2xl leading-none">
+                                <span>62.7%</span>
+                                <span class="text-base">▼</span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden shadow-inner border border-slate-200/50">
+                            <div class="bg-sict-verde h-full rounded-full transition-all duration-500" style="width: 62.7%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex justify-between items-center text-[11px] font-bold text-sict-guindaLight group-hover:bg-sict-guindaLight group-hover:text-white transition-all">
+                    <span>Desglosar Gremios</span>
+                    <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </div>
+
+            <!-- TARJETA 3: CÁMARAS  -->
+            <div onclick="mostrarDetalle('camaras', 'CÁMARAS DE AUTOTRANSPORTE (Métricas Corporativas)')" class="bg-white rounded-2xl border-t-4 border-t-sict-verde border-x-slate-200 border-b-slate-200 border custom-shadow card-hover card-3 cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                <div class="p-6 space-y-5">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest group-hover:text-sict-verde transition-colors">3. CÁMARAS</h3>
+                        <span class="bg-emerald-50 text-sict-verde text-[9px] font-black tracking-wider px-2 py-1 rounded-md border border-emerald-100 uppercase">Organizado</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 shadow-inner">
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Total Trámites</p>
+                            <p class="text-2xl font-black text-slate-800 mt-1">35,400</p>
+                        </div>
+                        <div class="bg-sict-verde/5 p-3 rounded-xl border border-sict-verde/10 shadow-inner">
+                            <p class="text-[9px] text-sict-verde font-bold uppercase tracking-wider">Entregados</p>
+                            <p class="text-2xl font-black text-sict-verde mt-1">29,100</p>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN DE EFICIENCIA PROMEDIO-->
+                    <div class="space-y-2.5 pt-2 border-t border-slate-100/80">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-1">
+                            <span class="text-sm font-black text-slate-500 uppercase tracking-wide">Eficiencia Promedio</span>
+                            <div class="flex items-center gap-1 text-sict-verde font-black text-xl sm:text-2xl leading-none">
+                                <span>82.2%</span>
+                                <span class="text-base">▲</span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden shadow-inner border border-slate-200/50">
+                            <div class="bg-sict-verde h-full rounded-full transition-all duration-500" style="width: 82.2%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex justify-between items-center text-[11px] font-bold text-sict-verde group-hover:bg-sict-verde group-hover:text-white transition-all">
+                    <span>Desglosar Cámaras</span>
+                    <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN  EXPANSIBLE DINÁMICO -->
+        <section id="panel-detalle" class="hidden bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden transition-all duration-500 mt-8 ring-1 ring-slate-900/5">
+            
+            <!-- Encabezado Espejo Inteligente -->
+            <div class="relative bg-gradient-to-r from-sict-pantone via-[#4A0A23] to-[#2D0514] text-white px-4 md:px-8 py-5 flex justify-between items-center border-b-4 border-sict-arena select-none">
+                <div class="absolute top-0 right-1/4 w-12 h-full bg-sict-arena/5 skew-x-12 transform pointer-events-none"></div>
+                
+                <div class="space-y-0.5 border-l-4 border-sict-arena pl-3 md:pl-4 relative z-10 max-w-[70%]">
+                    <span class="text-[9px] font-black uppercase tracking-[0.2em] text-sict-arena block truncate">Desglose Analítico Paramétrico</span>
+                    <h2 id="titulo-detalle" class="text-xs md:text-sm font-black uppercase tracking-wide text-white drop-shadow-sm break-words">Grupo Seleccionado</h2>
+                </div>
+                
+                <button onclick="cerrarDetalle()" class="relative z-10 group flex items-center gap-1.5 text-[10px] md:text-[11px] bg-black/20 hover:bg-red-700/80 border border-white/10 text-white px-3 md:px-4 py-1.5 rounded-full font-bold transition-all backdrop-blur-md shrink-0">
+                    <span>✕</span> <span>Cerrar</span>
+                </button>
+            </div>
+
+            <div class="p-4 md:p-8">
+                <div id="contenedor-barras" class="space-y-5"></div>
+
+                <!--  RESPONSIVE -->
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <p class="text-[9px] font-black tracking-widest uppercase text-slate-400 mb-4 text-center md:hidden">Nomenclatura:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-x-6 gap-y-4 items-center justify-center text-xs font-semibold text-slate-500">
+                        <span class="hidden md:inline text-[9px] font-black tracking-widest uppercase text-slate-400 mr-2">Nomenclatura:</span>
+                        <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-sict-verde shrink-0 shadow-sm"></span> Entregado</span>
+                        <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-teal-400 shrink-0 shadow-sm"></span> Para Entrega</span>
+                        <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-amber-400 shrink-0 shadow-sm"></span> En Proceso</span>
+                        <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-orange-400 shrink-0 shadow-sm"></span> Cambio Folio</span>
+                        <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-red-500 shrink-0 shadow-sm"></span> Rechazo</span>
+                        <span class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full bg-slate-300 shrink-0 shadow-sm"></span> Falta Pago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const baseDeDatosRealista = {
+            estados: [
+                { nombre: 'Chiapas', e: 74, pe: 8, pr: 6, f: 5, r: 4, pa: 3 },
+                { nombre: 'Oaxaca', e: 61, pe: 14, pr: 10, f: 7, r: 5, pa: 3 },
+                { nombre: 'EDOMEX (Zumpango)', e: 72, pe: 8, pr: 9, f: 5, r: 4, pa: 2 }
+            ],
+            uniones: [
+                { nombre: 'UPAC', e: 58, pe: 12, pr: 14, f: 8, r: 5, pa: 3 },
+                { nombre: 'AMOTAC', e: 66, pe: 10, pr: 11, f: 6, r: 5, pa: 2 },
+                { nombre: 'H-AMOTAC', e: 60, pe: 13, pr: 12, f: 7, r: 6, pa: 2 },
+                { nombre: 'UNMET', e: 64, pe: 11, pr: 13, f: 5, r: 4, pa: 3 },
+                { nombre: 'ANRA', e: 65, pe: 9, pr: 12, f: 6, r: 5, pa: 3 }
+            ],
+            camaras: [
+                { nombre: 'CANACAR', e: 84, pe: 6, pr: 4, f: 3, r: 2, pa: 1 },
+                { nombre: 'CONATRAM', e: 80, pe: 8, pr: 5, f: 4, r: 2, pa: 1 }
+            ]
+        };
+
+        function mostrarDetalle(tipo, titulo) {
+            const panel = document.getElementById('panel-detalle');
+            const txtTitulo = document.getElementById('titulo-detalle');
+            const contenedorBarras = document.getElementById('contenedor-barras');
+            
+            txtTitulo.innerText = titulo;
+            contenedorBarras.innerHTML = ''; 
+
+            baseDeDatosRealista[tipo].forEach(item => {
+               
+                const renderizarPorcentaje = (valor) => valor > 3 ? `${valor}%` : '';
+
+                const itemHTML = `
+                    <div class="p-4 md:p-5 bg-white rounded-2xl shadow-[0_2px_12px_-4px_rgba(0,0,0,0.06)] border border-slate-100 hover:shadow-md transition-all duration-300">
+                        <div class="flex justify-between items-center mb-3.5 gap-2">
+                            <div>
+                                <h4 class="text-xs md:text-sm font-black text-slate-800 uppercase tracking-wider break-words">${item.nombre}</h4>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="text-sict-verde font-black text-2xl md:text-3xl leading-none block">${item.e}%</span>
+                                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mt-0.5">Eficiencia</span>
+                            </div>
+                        </div>
+
+                        <!-- Barra de progreso con números incrustados (h-7 para mejor legibilidad) -->
+                        <div class="w-full h-7 rounded-full flex overflow-hidden shadow-inner bg-slate-100 text-[10px] md:text-xs font-bold font-sans">
+                            <div class="bg-sict-verde h-full flex items-center justify-center text-white transition-all hover:opacity-90 cursor-help" title="Entregado: ${item.e}%" style="width: ${item.e}%">
+                                ${renderizarPorcentaje(item.e)}
+                            </div>
+                            <div class="bg-teal-400 h-full border-l border-white/40 flex items-center justify-center text-teal-950 transition-all hover:opacity-90 cursor-help" title="Para Entrega: ${item.pe}%" style="width: ${item.pe}%">
+                                ${renderizarPorcentaje(item.pe)}
+                            </div>
+                            <div class="bg-amber-400 h-full border-l border-white/40 flex items-center justify-center text-amber-950 transition-all hover:opacity-90 cursor-help" title="En Proceso: ${item.pr}%" style="width: ${item.pr}%">
+                                ${renderizarPorcentaje(item.pr)}
+                            </div>
+                            <div class="bg-orange-400 h-full border-l border-white/40 flex items-center justify-center text-orange-950 transition-all hover:opacity-90 cursor-help" title="Cambio de Folio: ${item.f}%" style="width: ${item.f}%">
+                                ${renderizarPorcentaje(item.f)}
+                            </div>
+                            <div class="bg-red-500 h-full border-l border-white/40 flex items-center justify-center text-white transition-all hover:opacity-90 cursor-help" title="Rechazado: ${item.r}%" style="width: ${item.r}%">
+                                ${renderizarPorcentaje(item.r)}
+                            </div>
+                            <div class="bg-slate-300 h-full border-l border-white/40 flex items-center justify-center text-slate-800 transition-all hover:opacity-90 cursor-help" title="Falta de Pago: ${item.pa}%" style="width: ${item.pa}%">
+                                ${renderizarPorcentaje(item.pa)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contenedorBarras.innerHTML += itemHTML;
+            });
+
+            panel.classList.remove('hidden');
+            setTimeout(() => {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 50);
+        }
+
+        function cerrarDetalle() {
+            document.getElementById('panel-detalle').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
