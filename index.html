@@ -29,7 +29,14 @@
         /* Sombras dinámicas basadas en el color oficial de cada tarjeta */
         .card-1:hover { box-shadow: 0 12px 24px -4px rgba(165, 127, 44, 0.15); border-color: #a57f2c; }
         .card-2:hover { box-shadow: 0 12px 24px -4px rgba(157, 36, 73, 0.15); border-color: #9d2449; }
-        .card-3:hover { box-shadow: 0 12px 24px -4px rgba(19, 50, 46, 0.15); border-color: #13322e; }
+        .card-3:hover {
+    box-shadow: 0 12px 24px -4px rgba(152,152,154,0.15);
+    border-color: #98989A;
+}
+.card-4:hover {
+    box-shadow: 0 12px 24px -4px rgba(0,47,42,0.15);
+    border-color: #002F2A;
+}
     </style>
 </head>
 <body class="bg-sict-grisFondo text-slate-800 font-sans antialiased">
@@ -88,7 +95,7 @@
         </section>
 
         <!-- SECCIÓN TARJETAS SUPERIORES -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <!-- TARJETA 1: ESTADOS -->
             <div onclick="mostrarDetalle('estados', 'ESTADOS (Métricas Individuales)')" class="bg-white rounded-2xl border-t-4 border-t-sict-dorado border-x-slate-200 border-b-slate-200 border custom-shadow card-hover card-1 cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between group">
@@ -169,11 +176,11 @@
             </div>
 
             <!-- TARJETA 3: CÁMARAS  -->
-            <div onclick="mostrarDetalle('camaras', 'CÁMARAS DE AUTOTRANSPORTE (Métricas Corporativas)')" class="bg-white rounded-2xl border-t-4 border-t-sict-verde border-x-slate-200 border-b-slate-200 border custom-shadow card-hover card-3 cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+            <div onclick="mostrarDetalle('camaras', 'CÁMARAS DE AUTOTRANSPORTE (Métricas Corporativas)')" class="bg-white rounded-2xl border-t-4 border-t-[#98989A] border-x-slate-200 border-b-slate-200 border custom-shadow card-hover card-3 cursor-pointer transition-all duration-300 overflow-hidden flex flex-col justify-between group">
                 <div class="p-6 space-y-5">
                     <div class="flex justify-between items-center">
                         <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest group-hover:text-sict-verde transition-colors">3. CÁMARAS</h3>
-                        <span class="bg-emerald-50 text-sict-verde text-[9px] font-black tracking-wider px-2 py-1 rounded-md border border-emerald-100 uppercase">Organizado</span>
+                        <span class="bg-slate-100 text-[#98989A] text-[9px] font-black tracking-wider px-2 py-1 rounded-md border border-emerald-100 uppercase">Organizado</span>
                     </div>
                     
                     <div class="grid grid-cols-2 gap-4">
@@ -181,7 +188,7 @@
                             <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Total Trámites</p>
                             <p class="text-2xl font-black text-slate-800 mt-1">35,400</p>
                         </div>
-                        <div class="bg-sict-verde/5 p-3 rounded-xl border border-sict-verde/10 shadow-inner">
+                        <div class="bg-[#98989A]/10 p-3 rounded-xl border border-[#98989A]/20 shadow-inner">
                             <p class="text-[9px] text-sict-verde font-bold uppercase tracking-wider">Entregados</p>
                             <p class="text-2xl font-black text-sict-verde mt-1">29,100</p>
                         </div>
@@ -191,22 +198,257 @@
                     <div class="space-y-2.5 pt-2 border-t border-slate-100/80">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-1">
                             <span class="text-sm font-black text-slate-500 uppercase tracking-wide">Eficiencia Promedio</span>
-                            <div class="flex items-center gap-1 text-sict-verde font-black text-xl sm:text-2xl leading-none">
-                                <span>82.2%</span>
-                                <span class="text-base">▲</span>
-                            </div>
+                            <div class="
+flex items-center gap-1
+text-[#1E5B4F]
+font-black
+text-xl sm:text-2xl
+leading-none">
+
+    <span>82.2%</span>
+    <span class="text-base">▲</span>
+
+</div>
                         </div>
                         <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden shadow-inner border border-slate-200/50">
                             <div class="bg-sict-verde h-full rounded-full transition-all duration-500" style="width: 82.2%"></div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex justify-between items-center text-[11px] font-bold text-sict-verde group-hover:bg-sict-verde group-hover:text-white transition-all">
+                <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex justify-between items-center text-[11px] font-bold text-[#98989A] group-hover:bg-[#98989A] group-hover:text-white transition-all">
                     <span>Desglosar Cámaras</span>
                     <span class="transform group-hover:translate-x-1 transition-transform">→</span>
                 </div>
             </div>
+<!-- TARJETA 4: SENEAM -->
+<div
+onclick="mostrarDetalle(
+'seneam',
+'SENEAM (Avance de Actividades)'
+)"
+class="
+bg-white
+rounded-2xl
+border-t-4
+border-t-[#002F2A]
+border-x-slate-200
+border-b-slate-200
+border
+custom-shadow
+card-hover
+card-4
+cursor-pointer
+transition-all
+duration-300
+overflow-hidden
+flex
+flex-col
+justify-between
+group
+">
 
+    <div class="p-6 space-y-5">
+
+        <!-- ENCABEZADO -->
+        <div class="flex justify-between items-center">
+
+            <h3 class="
+            text-xs
+            font-black
+            text-slate-500
+            uppercase
+            tracking-widest
+            group-hover:text-[#002F2A]
+            transition-colors
+            ">
+                4. SENEAM
+            </h3>
+
+            <span class="
+            bg-[#002F2A]/10
+            text-[#002F2A]
+            text-[9px]
+            font-black
+            tracking-wider
+            px-2
+            py-1
+            rounded-md
+            uppercase
+            ">
+                Laboral
+            </span>
+
+        </div>
+
+        <!-- KPIs -->
+        <div class="grid grid-cols-2 gap-4">
+
+            <!-- TOTAL -->
+            <div class="
+            bg-slate-50
+            p-3
+            rounded-xl
+            border
+            border-slate-100
+            shadow-inner
+            ">
+
+                <p class="
+                text-[9px]
+                text-slate-400
+                font-bold
+                uppercase
+                tracking-wider
+                ">
+                    Total Acciones
+                </p>
+
+                <p class="
+                text-2xl
+                font-black
+                text-slate-800
+                mt-1
+                ">
+                    3
+                </p>
+
+            </div>
+
+            <!-- CONCLUIDAS -->
+            <div class="
+            bg-[#002F2A]/5
+            p-3
+            rounded-xl
+            border
+            border-[#002F2A]/10
+            shadow-inner
+            ">
+
+                <p class="
+                text-[9px]
+                text-[#002F2A]
+                font-bold
+                uppercase
+                tracking-wider
+                ">
+                    Concluidas
+                </p>
+
+                <p class="
+                text-2xl
+                font-black
+                text-[#002F2A]
+                mt-1
+                ">
+                    2
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- AVANCE -->
+        <div class="
+        space-y-2.5
+        pt-2
+        border-t
+        border-slate-100/80
+        ">
+
+            <div class="
+            flex
+            justify-between
+            items-end
+            ">
+
+                <span class="
+                text-sm
+                font-black
+                text-slate-500
+                uppercase
+                tracking-wide
+                ">
+                    Avance General
+                </span>
+
+                <div class="
+                flex
+                items-center
+                gap-1
+                text-[#002F2A]
+                font-black
+                text-xl
+                sm:text-2xl
+                leading-none
+                ">
+
+                    <span>78.0%</span>
+                    <span class="text-base">▲</span>
+
+                </div>
+
+            </div>
+
+            <!-- BARRA -->
+            <div class="
+            w-full
+            bg-slate-100
+            h-5
+            rounded-full
+            overflow-hidden
+            shadow-inner
+            border
+            border-slate-200/50
+            ">
+
+                <div
+                class="
+                bg-[#002F2A]
+                h-full
+                rounded-full
+                transition-all
+                duration-500
+                "
+                style="width:78%">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="
+    bg-slate-50
+    px-6
+    py-3
+    border-t
+    border-slate-100
+    flex
+    justify-between
+    items-center
+    text-[11px]
+    font-bold
+    text-[#002F2A]
+    group-hover:bg-[#002F2A]
+    group-hover:text-white
+    transition-all
+    ">
+
+        <span>Desglosar Actividades</span>
+
+        <span class="
+        transform
+        group-hover:translate-x-1
+        transition-transform
+        ">
+            →
+        </span>
+
+    </div>
+
+</div>
         </section>
 
         <!-- SECCIÓN  EXPANSIBLE DINÁMICO -->
@@ -261,9 +503,15 @@
                 { nombre: 'ANRA', e: 65, pe: 9, pr: 12, f: 6, r: 5, pa: 3 }
             ],
             camaras: [
-                { nombre: 'CANACAR', e: 84, pe: 6, pr: 4, f: 3, r: 2, pa: 1 },
-                { nombre: 'CONATRAM', e: 80, pe: 8, pr: 5, f: 4, r: 2, pa: 1 }
-            ]
+    { nombre: 'CANACAR', e:84, pe:6, pr:4, f:3, r:2, pa:1 },
+    { nombre: 'CONATRAM', e:80, pe:8, pr:5, f:4, r:2, pa:1 }
+],
+
+seneam: [
+    { nombre:'Sueldos', e:85, pe:5, pr:5, f:3, r:1, pa:1 },
+    { nombre:'Horarios', e:70, pe:10, pr:10, f:5, r:3, pa:2 },
+    { nombre:'Prestaciones', e:80, pe:8, pr:6, f:3, r:2, pa:1 }
+]
         };
 
         function mostrarDetalle(tipo, titulo) {
